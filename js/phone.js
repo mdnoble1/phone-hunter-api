@@ -1,6 +1,6 @@
 // fetch phone data from the api
 
-const loadPhone = async (searchText, isShowAll) => {
+const loadPhone = async (searchText='13', isShowAll) => {
   const res = await fetch(
     `https://openapi.programming-hero.com/api/phones?search=${searchText}`
   );
@@ -39,7 +39,7 @@ const displayPhone = (phones, isShowAll) => {
 
   // showing only 12 phones at first if show all button not pressed
 
-  if(!isShowAll){
+  if (!isShowAll) {
     phones = phones.slice(0, 12);
   }
 
@@ -77,16 +77,57 @@ const displayPhone = (phones, isShowAll) => {
   toggleLoadingSpinner(false);
 };
 
-// handle show details button modal 
+// handle show details button modal
 
 const handleShowDetail = async (id) => {
   // console.log('detail dekhte chai mama' , id)
 
-  // loading single phone API data 
-  const res = await fetch(`https://openapi.programming-hero.com/api/phone/${id}`);
+  // loading single phone API data
+  const res = await fetch(
+    `https://openapi.programming-hero.com/api/phone/${id}`
+  );
   const data = await res.json();
-  console.log(data.data)
-}
+  const phoneDetails = data.data;
+
+  // calling the show details function
+
+  handleShowDetails(phoneDetails);
+};
+
+// handle show details modal operatin
+
+const handleShowDetails = (phone) => {
+  // console.log(phone);
+
+  // getting the div where I want to show details
+
+  const showDetailsContainer = document.getElementById(
+    "show-details-container"
+  );
+
+  // setting innerHTML in the div
+
+  showDetailsContainer.innerHTML = `
+    <figure><img class="mx-auto my-4" src="${phone.image}" /></figure>
+    <h3 class="font-bold text-2xl pt-4">${phone.name}</h3>
+    <p class="py-2"> <span class="font-bold">Storage : </span> ${phone?.mainFeatures?.storage}</p>
+    <p class="py-2"> <span class="font-bold">Display Size : </span> ${phone?.mainFeatures?.displaySize}</p>
+    <p class="py-2"> <span class="font-bold">Chipset : </span> ${phone?.mainFeatures?.chipSet}</p>
+    <p class="py-2"> <span class="font-bold">Memory : </span> ${phone?.mainFeatures?.memory}</p>
+    <p class="py-2"> <span class="font-bold">Release Date : </span> ${phone?.releaseDate}</p>
+    <p class="py-2"> <span class="font-bold">Brand : </span> ${phone?.brand}</p>
+    <p class="py-2"> <span class="font-bold">GPS : </span> ${phone?.others?.GPS || ''}</p>
+    <div class="modal-action">
+    <form method="dialog">
+      <!-- if there is a button in form, it will close the modal -->
+      <button class="btn">Close</button>
+    </form>
+    </div>`;
+
+  // show the modal by click
+
+  show_details_modal.showModal();
+};
 
 // handle search button operation
 
@@ -127,4 +168,4 @@ const handleShowAllButton = () => {
 };
 // globally calling functions
 
-// loadPhone();
+loadPhone();

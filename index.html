@@ -19,12 +19,16 @@
     <main>
       <!-- search field section  -->
       <section class="flex items-center justify-center gap-4 mt-12">
-        <input id="search-field" type="text" placeholder="Search Here..." class="input input-bordered w-full max-w-xs" />
+        <input
+          id="search-field"
+          type="text"
+          placeholder="Search Here..."
+          class="input input-bordered w-full max-w-xs"
+        />
         <button onclick="handleButton()" class="btn btn-accent">Search</button>
       </section>
       <!-- phone card section showing search results  -->
       <section class="container mx-auto mt-16">
-
         <!-- spinner or loader container -->
         <div id="loading-spinner" class="text-center my-40 hidden">
           <span class="loading loading-spinner loading-lg"></span>
@@ -38,8 +42,19 @@
         </div>
         <!-- show all button div  -->
         <div id="show-all-container" class="text-center mb-8 hidden">
-          <button onclick="handleShowAllButton()" class="btn btn-accent">Show All</button>
+          <button onclick="handleShowAllButton()" class="btn btn-accent">
+            Show All
+          </button>
         </div>
+      </section>
+      <!-- show details modal section  -->
+      <section>
+        <!-- Open the modal using ID.showModal() method -->
+        <dialog id="show_details_modal" class="modal modal-bottom sm:modal-middle">
+          <div id="show-details-container" class="modal-box">
+            <!-- dynamically setting innerHtml  -->
+          </div>
+        </dialog>
       </section>
     </main>
     <footer></footer>
