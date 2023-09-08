@@ -68,12 +68,23 @@ const displayPhone = (phones) => {
 
     phoneContainer.appendChild(phoneCard);
   });
+
+  // hiding the loadingSpinner after finishing loading operation of phones 
+
+  toggleLoadingSpinner(false);
+
 };
 
 // handle search button operation 
 
 const handleButton = () => {
-  // console.log('search kortese re mama')
+  // console.log('search kortase re mama')
+
+  // calling te loadingSpinner function before loading operation is done 
+
+  toggleLoadingSpinner(true);
+
+
   const searchField = document.getElementById('search-field');
   const searchText = searchField.value;
   // console.log(searchText);
@@ -82,6 +93,21 @@ const handleButton = () => {
 
   loadPhone(searchText);
   searchField.value = '';
+}
+
+
+// handle toggle operation of loading or spinner 
+
+const toggleLoadingSpinner = (isLoading) => {
+  const loadingSpinner = document.getElementById('loading-spinner');
+  
+  if(isLoading){
+    loadingSpinner.classList.remove('hidden');
+  }
+  else {
+    loadingSpinner.classList.add('hidden');
+  }
+
 }
 // globally calling functions
 
