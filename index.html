@@ -14,24 +14,23 @@
   </head>
   <body>
     <header>
-        <h3 class="text-6xl text-center mt-12">Phone Hunter</h3>
+      <h3 class="text-6xl text-center mt-20">Phone Hunter</h3>
     </header>
     <main>
-        <!-- phone card section  -->
-        <section>
-            <div id="phone-container">
-                <div class="card w-96 bg-base-100 shadow-xl">
-                    <figure><img src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" /></figure>
-                    <div class="card-body">
-                      <h2 class="card-title">Shoes!</h2>
-                      <p>If a dog chews shoes whose shoes does he choose?</p>
-                      <div class="card-actions justify-end">
-                        <button class="btn btn-primary">Buy Now</button>
-                      </div>
-                    </div>
-                  </div>
-            </div>
-        </section>
+      <!-- search field section  -->
+      <section class="flex items-center justify-center gap-4 mt-12">
+        <input id="search-field" type="text" placeholder="search Here..." class="input input-bordered w-full max-w-xs" />
+        <button onclick="handleButton()" class="btn btn-accent">Search</button>
+      </section>
+      <!-- phone card section showing search results  -->
+      <section class="container mx-auto mt-16">
+        <div
+          id="phone-container"
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
+          <!-- dynamically setting innerHtml  -->
+        </div>
+      </section>
     </main>
     <footer></footer>
     <!-- script files links  -->
