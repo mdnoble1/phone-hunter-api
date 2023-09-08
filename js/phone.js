@@ -62,7 +62,7 @@ const displayPhone = (phones, isShowAll) => {
         <h2 class="card-title mx-auto">${phone.phone_name}</h2>
         <p class="text-center">If a dog chews shoes whose shoes does he choose?</p>
         <div class="card-actions justify-center">
-        <button class="btn btn-primary">Buy Now</button>
+        <button onclick="handleShowDetail('${phone.slug}')" class="btn btn-primary">Show Details</button>
         </div>
     </div>
     `;
@@ -76,6 +76,17 @@ const displayPhone = (phones, isShowAll) => {
 
   toggleLoadingSpinner(false);
 };
+
+// handle show details button modal 
+
+const handleShowDetail = async (id) => {
+  // console.log('detail dekhte chai mama' , id)
+
+  // loading single phone API data 
+  const res = await fetch(`https://openapi.programming-hero.com/api/phone/${id}`);
+  const data = await res.json();
+  console.log(data.data)
+}
 
 // handle search button operation
 
