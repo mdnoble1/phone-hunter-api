@@ -13,7 +13,24 @@ const loadPhone = async (searchText) => {
 // showing phone data dynamically
 
 const displayPhone = (phones) => {
-  //   console.log(phones);
+    // console.log(phones);
+
+    // showing show all button when there is more than 12 phones 
+
+    const showAllContainer = document.getElementById('show-all-container');
+
+    if( phones.length > 12) {
+      showAllContainer.classList.remove('hidden');
+    }
+
+    else {
+      showAllContainer.classList.add('hidden');
+    }
+
+    // showing only 12 phones at first 
+
+    phones = phones.slice(0 , 12);
+    // console.log(phones)
 
   //   getting the container where I want to display phones
 
